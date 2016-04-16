@@ -1,4 +1,4 @@
-I created this version to demonstrate my understanding of wxPython.
+I created this version to demonstrate my understanding of Tkinter.
 
 This was a project to provide a file dialog menu to select their source directory and then again select their destination folder and then my application will iterate through the source directory for all instances of .txt files that have been modified with in a 24 hour period and move those qualified .txt files into the destination directory.
 
