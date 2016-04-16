@@ -1,7 +1,7 @@
 #!/usr/local/bin/python2
 # Daniel A. Christie
 # Purpose:  This script was created in an effort to learn a button roll-over
-# effect with imeages. Took a little time to learn but as usual, worth it.
+# effect with images. Took a little time to learn but as usual, worth it.
 
 import wx
 
