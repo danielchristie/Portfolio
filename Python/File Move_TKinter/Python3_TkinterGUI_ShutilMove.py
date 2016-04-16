@@ -119,7 +119,7 @@ class Feedback:
                         # comparing modification time from deadline and moving if appropriate
                         if now >= modified_time >= deadline:
                             print('Files modified within the last 24hours: ' + pathname)
-                            #shutil.move(pathname, dest_path)
+                            shutil.move(pathname, dest_path)
             except Exception as e:
                 print(e)
             # console the error that has occured during the file transfer
