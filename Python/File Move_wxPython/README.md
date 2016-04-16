@@ -1,4 +1,4 @@
-### shutil.Move (File Move)
+### File Move - shutil.move module
 ***
 
 I created this version to demonstrate my understanding of wxPython.
