@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+<head><title>ToDoList using Knockoutjs</title>
+	<script type="text/javascript" src="jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="knockout-3.4.0.js"></script>
+	<script type="text/javascript">
+
+		$(function()
+		{
+			var count = "0"
+			var appViewModel = function()
+			{
+				var self = this; //this is an object reference within this calling function
+
+				//self=parent
+				//Pre-loading a list of items at load
+				self.todos = ko.observableArray
+				([
+					{
+						item: "Wash the car"
+					},
+					{
+						item: "Clean the dishes"
+					},
+					{
+						item: "Pay the bills"
+					},
+					{
+						item: "Make Dr. Appt"
+					},
+					{
+						item: "Set alarm for 6am"
+					},
+					{
+						item: "Refuel the car"
+					}
+				]);
+
+				//ko.observable instructs knockout to become aware of the changes in text field and note it
+				self.newTodo = ko.observable("");
+				
+
+				//This function when invoked will append items to the list
+				self.addNewTodo = function()
+				{
+					self.todos.push({item: self.newTodo()});
+					self.newTodo();
+				}
+				//This function when invoked will remove items from the list
+				self.removeTodo = function()
+				{
+					self.todos.remove(this);
+				}
+				
+			}
+
+			//Instructs knockout to refresh itself to note the changes within the todos observableArray
+			//When the page is loaded, refreshed, or an item is added or removed, it will note the changes
+			ko.applyBindings(new appViewModel())
+		})
+
+	</script>
+</head>
+<body>
+
+<center>
+<div class="container">
+<div class="hero-unit">
+<h1>ToDo List:</h1>
+	<!-- Iterating through the list of items defined above-->
+	<div data-bind="foreach: todos">
+	<input type="text" data-bind="value: item"/>
+	<!-- This button will call the remove function to remove the current item in the list -->
+	<button type="submit" data-bind="click: $parent.removeTodo">x</button>
+	<br/>
+	</div>
+		<br>
+		<input type="text" placeholder="Add a new todo: "
+			data-bind="value: newTodo"/>
+		<!-- This button will call the function addNewTodo to add a new item to the list -->
+		<button type="submit" data-bind="click: addNewTodo">Add</button>
+		<br/><br/>
+		<!-- Counts the number of items in the list -->
+		Item Count: = <span data-bind="text: todos().length"></span>
+</div>
+</div>
+</center>
+</body>
+</html>
